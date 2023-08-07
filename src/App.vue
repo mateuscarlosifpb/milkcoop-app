@@ -1,28 +1,52 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+	<v-app class="tudo">
+		<Sidebar/>
+		<v-main
+			:color="$vuetify.theme.dark == false? '#f8f9fe' : ''"
+			>
+			<router-view/>
+		</v-main>
+	</v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+	import Sidebar from "./components/organisms/Sidebar.vue";
+	export default {
+		components: {
+      Sidebar,
+		},
+		data(){
+			return {
+				drawer: true,
+				mini: true,
+			};
+		},
+	};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  .tudo {
+    height: 100%;
+	width:100%;
+  }
+  .pagina {
+    padding: 2rem 1.2rem 2rem 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0.25rem;
+  }
+  ::-webkit-scrollbar {
+		width: 0px;
+		height: 5px;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: var(--v-tema)!important;
+		border-radius: 2px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: var(--v-tema)!important;
+		border-radius: 2px;
+	}
 </style>
